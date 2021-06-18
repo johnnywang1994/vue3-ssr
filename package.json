@@ -1,19 +1,19 @@
 {
   "name": "vue-ssr",
   "version": "1.0.0",
+  "author": "johnnywang1994",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently 'pnpm dev:client' 'pnpm dev:server'",
+    "dev": "concurrently 'pnpm dev:client' 'pnpm dev:server' 'pnpm start'",
     "dev:client": "cross-env NODE_ENV=development webpack --watch --config config/client.config.js",
     "dev:server": "cross-env NODE_ENV=development webpack --watch --config config/server.config.js",
     "build": "pnpm build:client && pnpm build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config config/client.config.js",
     "build:server": "cross-env NODE_ENV=production webpack --config config/server.config.js",
-    "start": "nodemon config/server.js"
+    "start": "nodemon --watch .ssr/entry-server.js --exec 'babel-node config/server.js'"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -45,7 +45,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "vue": "3.1.1",
-    "vue-meta": "3.0.0-alpha.3",
+    "vue-meta": "3.0.0-alpha.5",
     "vue-router": "^4.0.9",
     "vuex": "^4.0.1"
   }

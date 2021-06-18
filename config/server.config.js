@@ -9,12 +9,15 @@ const baseConfig = require('./base.config');
 
 const config = merge(baseConfig, {
   entry: path.resolve(__dirname, '../src/entry-server.js'),
+  experiments: {
+    outputModule: true,
+  },
   output: {
     path: path.resolve(__dirname, '../.ssr'),
     filename: 'entry-server.js',
     library: {
-      type: 'commonjs2', // native nodejs module
-    }
+      type: 'module', // native nodejs module
+    },
   },
   target: 'node', // in node env
   node: {

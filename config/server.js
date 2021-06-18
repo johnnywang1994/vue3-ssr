@@ -1,6 +1,6 @@
-const path = require('path');
-const express = require('express');
-const compileServer = require('./compile');
+import path from 'path';
+import express from 'express';
+import compileServer from './compile';
 
 const server = express();
 

@@ -1,12 +1,13 @@
-// import { renderToString } from '@vue/server-renderer';
-// import { renderMetaToString } from 'vue-meta/ssr';
 import { createApp } from './main';
 
 export default async function serverEntry(context) {
-  const { app, router } = createApp({ isServer: true });
+  console.log('pass server');
+  const { app, router, store, meta } = createApp({ isServer: true });
 
   // set server-side router's location
   router.push(context.url);
+  context.meta = meta;
+  context.store = store;
 
   await router.isReady();
 

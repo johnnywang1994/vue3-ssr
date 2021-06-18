@@ -16,7 +16,7 @@ export default {
     }
   },
   setup () {
-    useMeta({
+    const { meta } = useMeta({
       title: 'My Default App - About',
     })
   },

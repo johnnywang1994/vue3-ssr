@@ -1,4 +1,5 @@
 <template>
+  <div v-if="inClient"><metainfo></metainfo></div>
   <div id="app">
     <router-view />
   </div>
@@ -9,15 +10,21 @@ import { useMeta } from 'vue-meta';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      inClient: false,
+    }
+  },
   mounted() {
     console.log(this.$store);
+    this.inClient = true;
   },
   setup () {
     useMeta({
       title: 'My Default App',
       htmlAttrs: {
         lang: 'en',
-      }
+      },
     })
   },
 };

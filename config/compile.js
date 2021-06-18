@@ -1,7 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-const { renderToString } = require('@vue/server-renderer');
-const serverEntry = require('../.ssr/entry-server.js').default;
+import fs from 'fs';
+import path from 'path';
+import { renderToString } from '@vue/server-renderer';
+import serverEntry from '../.ssr/entry-server.js';
 
 /**
  * renderMetaToString
@@ -46,10 +46,10 @@ async function renderWithMeta(app) {
     .replace('{{ HEAD_ATTRS }}', ctx.teleports.headAttrs || '')
     .replace('{{ HEAD }}', ctx.teleports.head || '')
     .replace('{{ BODY_ATTRS }}', ctx.teleports.bodyAttrs || '')
-    .replace('{{ APP }}', `<div id="__maju">${appHtml}</div>`)
+    .replace('{{ APP }}', `<div id="__maju">${appHtml}</div>`);
 }
 
-module.exports = function compileServer(serverApp) {
+export default function compileServer(serverApp) {
   serverApp.get('*', async (req, res, next) => {
     const context = {
       url: req.url,
