@@ -18,6 +18,7 @@ const config = merge(baseConfig, {
     library: {
       type: 'module', // native nodejs module
     },
+    chunkFormat: "commonjs",
   },
   target: 'node', // in node env
   node: {
